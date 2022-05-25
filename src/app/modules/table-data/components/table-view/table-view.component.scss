@@ -1,0 +1,33 @@
+/* Structure */
+.table-view-container {
+    position: relative;
+  }
+  
+  .table-container {
+    position: relative;
+    // min-height: 200px;
+    // max-height: 400px;
+    height: 400px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  .table-loading {
+    margin: 0 auto;
+  }
+
+  .table-message {
+    text-align: center;
+    opacity: 0.8;
+    font-size: 0.8rem;
+   }
+   
+  /* Column Widths */
+  [class*="mat-column"] {
+    min-width: 64px;
+    max-width: 124px;
+  }
+  
