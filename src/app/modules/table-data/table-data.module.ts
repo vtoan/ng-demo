@@ -7,9 +7,16 @@ import { TableViewComponent } from './components/table-view/table-view.component
 import { TableDataComponent } from './table-data.component';
 import { DataService } from './services/data.service';
 import { MaterialModule } from './material.module';
+import { TableDemoComponent } from './components/table-demo/table-demo.component';
+import { WrapperTable } from './components/wrapper-table/wrapper-table.component';
 
 @NgModule({
-  declarations: [TableDataComponent, TableViewComponent],
+  declarations: [
+    TableDataComponent,
+    TableViewComponent,
+    WrapperTable,
+    TableDemoComponent
+  ],
   imports: [
     CommonModule,
     TableDataRoutingModule,

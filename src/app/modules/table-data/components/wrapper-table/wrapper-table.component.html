@@ -1,0 +1,45 @@
+<div class="table-view-container">
+  <div class="table-container">
+    <table mat-table [dataSource]="data">
+      <!-- Render custom column definitions in outer component -->
+      <ng-content></ng-content>
+
+      <ng-container *matNoDataRow>
+        <tr class="mat-row" *ngIf="isLoading; else tableMessage">
+          <td [attr.colspan]="columnNames?.length">
+            <ng-container [ngTemplateOutlet]="loadingElm"></ng-container>
+          </td>
+        </tr>
+      </ng-container>
+
+      <!-- Row definitions -->
+      <tr mat-header-row *matHeaderRowDef="columnNames; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnNames"></tr>
+    </table>
+  </div>
+
+  <mat-paginator
+    [length]="totalDataLength"
+    [pageSize]="pageSizeOptions[1]"
+    [pageSizeOptions]="pageSizeOptions"
+    aria-label="Select page of GitHub search results"
+  ></mat-paginator>
+</div>
+
+<!-- Custom UI -->
+<ng-template #tableMessage>
+  <tr class="mat-row">
+    <td class="table-message" [attr.colspan]="columnNames?.length">
+      <span *ngIf="isEmpty"> Empty !!!</span>
+      <span *ngIf="!isEmpty"> No data matching.</span>
+    </td>
+  </tr>
+</ng-template>
+
+<ng-template #loadingElm>
+  <mat-spinner
+    class="table-loading"
+    diameter="20"
+    *ngIf="isLoading"
+  ></mat-spinner>
+</ng-template>
